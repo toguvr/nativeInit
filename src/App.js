@@ -41,15 +41,23 @@ export default function App() {
     <>
       <StatusBar barStyle="light-content" backgroundColor="#7159c1" />
       <SafeAreaView style={styles.container}>
-     {list.map(repository=>
-     <View key={repository.id} style={styles.repositoryContainer}>
+        <FlatList
+        data={list}
+        keyExtractor={project=>project.id}
+        renderItem={({item})=>(
+          <View key={repository.id} style={styles.repositoryContainer}>
           <Text style={styles.repository}>{repository.title}</Text>
-          {repository.techs.map(tech=>
+          <FlatList
+        data={item.techs}
+        keyExtractor={tech=>tech}
+        renderItem={({item})=>(
+          
           <View key={tech} style={styles.techsContainer}>
             <Text style={styles.tech}>
-              {tech}
+              {item}
             </Text>
           </View>)}
+          />
           
 
           <View style={styles.likesContainer}>
@@ -71,6 +79,10 @@ export default function App() {
             <Text style={styles.buttonText}>Curtir</Text>
           </TouchableOpacity>
         </View>)   }
+      
+        />
+    
+     
 {/*    
             <Text
               style={styles.likeText}
