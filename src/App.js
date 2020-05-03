@@ -20,9 +20,9 @@ export default function App() {
     setList(response.data)
   }
 
-  // useEffect(()=>{
-  //   ListRepository()
-  // },[])
+  useEffect(()=>{
+    ListRepository()
+  },[])
 
   async function handleLikeRepository(id) {
 
@@ -45,14 +45,14 @@ export default function App() {
         data={list}
         keyExtractor={project=>project.id}
         renderItem={({item})=>(
-          <View key={repository.id} style={styles.repositoryContainer}>
-          <Text style={styles.repository}>{repository.title}</Text>
+          <View key={item.id} style={styles.repositoryContainer}>
+          <Text style={styles.repository}>{item.title}</Text>
           <FlatList
         data={item.techs}
         keyExtractor={tech=>tech}
         renderItem={({item})=>(
           
-          <View key={tech} style={styles.techsContainer}>
+          <View style={styles.techsContainer}>
             <Text style={styles.tech}>
               {item}
             </Text>
@@ -64,17 +64,17 @@ export default function App() {
             <Text
               style={styles.likeText}
               // Remember to replace "1" below with repository ID: {`repository-likes-${repository.id}`}
-              testID={`repository-likes-${repository.id}`}
+              testID={`repository-likes-${item.id}`}
             >
-              {`${repository.likes} ${Number(repository.likes) === 1 ? 'curtida' : 'curtidas'}`}
+              {`${item.likes} ${Number(item.likes) === 1 ? 'curtida' : 'curtidas'}`}
             </Text>
           </View>
 
           <TouchableOpacity
             style={styles.button}
-            onPress={() => handleLikeRepository(repository.id)}
+            onPress={() => handleLikeRepository(item.id)}
             // Remember to replace "1" below with repository ID: {`like-button-${repository.id}`}
-            testID={`like-button-${repository.id}`}
+            testID={`like-button-${item.id}`}
           >
             <Text style={styles.buttonText}>Curtir</Text>
           </TouchableOpacity>
