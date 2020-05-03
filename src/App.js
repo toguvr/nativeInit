@@ -42,10 +42,10 @@ export default function App() {
       <StatusBar barStyle="light-content" backgroundColor="#7159c1" />
       <SafeAreaView style={styles.container}>
      {list.map(repository=>
-     <View style={styles.repositoryContainer}>
+     <View key={repository.id} style={styles.repositoryContainer}>
           <Text style={styles.repository}>{repository.title}</Text>
-          {repository.techs(tech=>
-          <View style={styles.techsContainer}>
+          {repository.techs.map(tech=>
+          <View key={tech} style={styles.techsContainer}>
             <Text style={styles.tech}>
               {tech}
             </Text>
