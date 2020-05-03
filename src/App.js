@@ -71,7 +71,7 @@ export default function App() {
             <Text style={styles.buttonText}>Curtir</Text>
           </TouchableOpacity>
         </View>)   }
-   
+{/*    
             <Text
               style={styles.likeText}
               // Remember to replace "1" below with repository ID: {`repository-likes-${repository.id}`}
@@ -87,7 +87,7 @@ export default function App() {
             // Remember to replace "1" below with repository ID: {`like-button-${repository.id}`}
             testID={`like-button-d6e43105-a559-45b7-8fd7-53416b415741`}
           > <Text style={styles.buttonText}>Curtir</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
       </SafeAreaView>
     </>
   );
